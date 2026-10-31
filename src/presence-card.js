@@ -255,7 +255,7 @@ const cssUrl = (v) =>
 
 const lang = (hass, config) => {
   const l = config?.language || (hass && (hass.locale?.language || hass.language)) || "en";
-  return STRINGS[l] ? l : STRINGS[l.split("-")[0]] ? l.split("-")[0] : "en";
+  return STRINGS[l] ? l : (STRINGS[l.split("-")] ? l.split("-") : "en");
 };
 
 const t = (hass, config, key) => STRINGS[lang(hass, config)][key] ?? STRINGS.en[key] ?? key;
